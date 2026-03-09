@@ -139,6 +139,41 @@ article{
   .section h2{font-size:29px}
   .recipe-photos{grid-template-columns:1fr}
 }
+.recipe-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:28px;
+margin-top:30px;
+}
+
+.recipe-card{
+background:#ffffff;
+border-radius:16px;
+box-shadow:0 10px 26px rgba(0,0,0,0.08);
+padding:18px;
+transition:transform 0.2s ease;
+}
+
+.recipe-card:hover{
+transform:translateY(-4px);
+}
+
+.recipe-card img{
+width:100%;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.recipe-card h3{
+margin:6px 0;
+font-size:18px;
+}
+
+.recipe-card p{
+font-size:15px;
+color:#666;
+margin:0;
+}
 </style>
 </head>
 <body>
@@ -153,6 +188,41 @@ article{
     <div class="hero-copy">
       <div class="kicker">Zero-waste kitchen diary</div>
       <h1>Five ways to eat a chicken</h1>
+      <p>Here are five simple ways I turn one chicken into several meals during the week.</p>
+
+<div class="recipe-grid">
+
+<div class="recipe-card">
+<img src="drawing1.png">
+<h3>Chicken Salad</h3>
+<p>A light and refreshing meal made with shredded chicken breast.</p>
+</div>
+
+<div class="recipe-card">
+<img src="drawing2.png">
+<h3>Chicken Rice Porridge</h3>
+<p>A warm and comforting dish made from leftover chicken.</p>
+</div>
+
+<div class="recipe-card">
+<img src="drawing3.png">
+<h3>Chicken Leg + Garlic Soy Sauce</h3>
+<p>A savory dish with shredded chicken leg and simple garlic soy sauce.</p>
+</div>
+
+<div class="recipe-card">
+<img src="drawing4.png">
+<h3>Chicken Egg Fried Rice</h3>
+<p>A quick fried rice using leftover chicken and eggs.</p>
+</div>
+
+<div class="recipe-card">
+<img src="drawing5.png">
+<h3>Chicken Noodle Soup</h3>
+<p>A simple noodle soup made with chicken broth and shredded meat.</p>
+</div>
+
+</div>
       <p class="subtitle">A zero-waste kitchen guide for novices living alone</p>
       <p class="meta">By Jeanne Jiang</p>
     </div>
