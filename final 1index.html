@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeanne's Kitchen</title>
+<style>
+:root{
+  --bg:#f7f4ef;
+  --paper:#fffdf9;
+  --ink:#22201d;
+  --muted:#6d665e;
+  --line:#e7dfd4;
+  --accent:#b86f3a;
+  --accent-soft:#f4e4d4;
+  --shadow:0 12px 34px rgba(34,32,29,.08);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(circle at top left, #fcfaf6 0, var(--bg) 32%),
+    linear-gradient(180deg, #fbf8f3 0%, var(--bg) 100%);
+  color:var(--ink);
+  line-height:1.9;
+}
+.topbar{
+  position:sticky; top:0; z-index:10;
+  backdrop-filter: blur(10px);
+  background:rgba(247,244,239,.8);
+  border-bottom:1px solid rgba(231,223,212,.8);
+}
+.topbar-inner{
+  max-width:1120px; margin:0 auto; padding:14px 20px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:16px;
+}
+.brand{
+  font-size:20px; font-weight:700; letter-spacing:.2px;
+}
+.brand small{display:block; font-size:12px; color:var(--muted); font-weight:400}
+.hero{
+  max-width:1120px; margin:0 auto; padding:44px 20px 18px;
+}
+.hero-card{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap:28px;
+  align-items:center; background:var(--paper); border:1px solid var(--line);
+  border-radius:28px; box-shadow:var(--shadow); overflow:hidden;
+}
+.hero-copy{padding:44px 40px}
+.kicker{
+  display:inline-block; padding:8px 12px; border-radius:999px;
+  background:var(--accent-soft); color:#7d4a25; font-size:13px;
+  letter-spacing:.3px; margin-bottom:16px;
+}
+.hero h1{
+  margin:0 0 16px; font-size:54px; line-height:1.05;
+}
+.subtitle{font-size:20px; color:var(--muted); margin:0 0 20px}
+.meta{color:var(--muted); font-size:16px}
+.hero-image-wrap{height:100%}
+.hero-image-wrap img{
+  width:100%; height:100%; object-fit:cover; display:block; min-height:420px;
+}
+.layout{
+  max-width:1120px; margin:0 auto; padding:18px 20px 80px;
+  display:grid; grid-template-columns: 260px minmax(0, 1fr); gap:28px;
+}
+aside{
+  position:sticky; top:82px; align-self:start;
+}
+.panel{
+  background:var(--paper); border:1px solid var(--line);
+  border-radius:20px; box-shadow:var(--shadow); padding:18px 18px 16px;
+}
+.panel h3{
+  margin:0 0 10px; font-size:18px;
+}
+.toc a{
+  display:block; text-decoration:none; color:var(--ink);
+  padding:8px 10px; border-radius:10px; font-size:15px;
+}
+.toc a:hover{background:#f5efe7}
+.note{
+  margin-top:14px; color:var(--muted); font-size:14px; line-height:1.7;
+}
+article{
+  min-width:0;
+}
+.section{
+  background:var(--paper); border:1px solid var(--line);
+  border-radius:24px; box-shadow:var(--shadow);
+  padding:32px 34px; margin-bottom:24px;
+}
+.section h2{
+  margin:0 0 18px; font-size:34px; line-height:1.18;
+}
+.section p{
+  margin:0 0 18px; font-size:20px;
+}
+.lead p:first-of-type::first-letter{
+  float:left; font-size:62px; line-height:.9; padding-right:8px; padding-top:8px;
+  color:var(--accent);
+}
+.figure{
+  margin:26px 0 30px;
+}
+.figure img{
+  width:100%; display:block; border-radius:18px; box-shadow:var(--shadow);
+}
+.figcap{
+  text-align:center; color:var(--muted); font-size:14px; margin-top:8px;
+}
+.recipe-photos{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:20px 0 26px;
+}
+.recipe-photos.one{grid-template-columns:1fr}
+.recipe-photos img{margin:0; height:100%; object-fit:cover}
+.callout{
+  background:#faf5ee; border:1px dashed #e2c8ab; color:#6c533b;
+  padding:14px 16px; border-radius:16px; margin:22px 0; font-size:17px;
+}
+.footer{
+  text-align:center; color:var(--muted); padding:28px 0 10px; font-size:14px;
+}
+@media (max-width: 920px){
+  .hero-card{grid-template-columns:1fr}
+  .hero-copy{padding:34px 26px}
+  .hero h1{font-size:42px}
+  .layout{grid-template-columns:1fr}
+  aside{position:static}
+}
+@media (max-width: 680px){
+  .section{padding:24px 20px}
+  .section p{font-size:18px}
+  .section h2{font-size:29px}
+  .recipe-photos{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Jeanne’s Kitchen<small>Simple cooking for people living alone</small></div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-card">
+    <div class="hero-copy">
+      <div class="kicker">Zero-waste kitchen diary</div>
+      <h1>Five ways to eat a chicken</h1>
+      <p class="subtitle">A zero-waste kitchen guide for novices living alone</p>
+      <p class="meta">By Jeanne Jiang</p>
+    </div>
+    <div class="hero-image-wrap">
+      <img src="cover.png" alt="Chicken prepared for a week of meals">
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+  <aside>
+    <div class="panel">
+      <h3>On this page</h3>
+      <nav class="toc">
+        <a href="#story">Story</a>
+        <a href="#turnaround">The cheat code</a>
+        <a href="#prep">Sunday meal prep</a>
+        <a href="#ingredients">Ingredients</a>
+        <a href="#method1">Method 1 · Salad</a>
+        <a href="#method2">Method 2 · Rice soup</a>
+        <a href="#method3">Method 3 · Chicken leg</a>
+        <a href="#method4">Method 4 · Fried rice</a>
+        <a href="#method5">Method 5 · Noodles</a>
+        <a href="#bonus">Bonus</a>
+        <a href="#why">Why this changed my life</a>
+        <a href="#yourturn">Your turn</a>
+      </nav>
+     
+  </aside>
+  <article>
+
+<section class="section lead" id="story">
+<h2>My love and hatred with the three pieces of chicken breast</h2>
+<p>When I first lived alone, I did something stupid that I think of now.</p>
+<p>It was the first weekend I moved into the apartment. I stood in front of the supermarket refrigerator, like all college students who were in house for the first time, full of fantasy of &quot;independent life&quot;. I want to be the kind of person who prepares meals on weekends, eats healthily and lives exquisitely. So I picked up a pack of chicken breast.</p>
+<p>Then I took another broccoli. Take another bag of potatoes.</p>
+<p>When I checked out, I was even a little proud: Look, I&#x27;m going to buy vegetables.</p>
+<p>You may have guessed the ending.</p>
+<p>The first day: grilled chicken breast + boiled broccoli + mashed potatoes. Well, it&#x27;s not bad. I have a sense of accomplishment when I cook by myself. I took a photo and posted it on WeChat Moments, and I got 12 likes.</p>
+<p>The second day: grilled chicken breast + boiled broccoli + mashed potatoes. It&#x27;s okay. Anyway, it&#x27;s healthy, and leftovers can&#x27;t be wasted.</p>
+<p>Day 3: Grilled chicken breast + boiled broccoli + mashed potatoes.</p>
+<p>On the fourth night, I opened the refrigerator and looked at the remaining two pieces of chicken breast, half a broccoli that was so withered that I couldn&#x27;t lift my head, and two potatoes that began to sprout - one of which was already five centimeters long, as if laughing at me.</p>
+<figure class="figure"><img src="sprouted_potato.png" alt="The moment every solo cook fears"><figcaption class="figcap">The moment every solo cook fears</figcaption></figure>
+<p>I closed the refrigerator door and leaned against the kitchen wall, almost crying.</p>
+<p>It&#x27;s not pretentious. It&#x27;s the kind of despair of &quot;Is my life like this?&quot; I wanted to order takeaway, but I looked at the balance ($23.47) and the delivery fee ($4.99), and silently turned off the software. I want to make something different, but I opened the Xiaohongshu and searched for &quot;how to make chicken breast&quot;, and it came up with all - &quot;fat-reducing meals are not repeated for a week&quot;.</p>
+<p>Click in and have a look. What you need: rosemary, olive oil spray, air fryer, food scale, cooking machine.</p>
+<p>I don&#x27;t have any. All my kitchen utensils are a wok, a soup pot, a bowl and a pair of chopsticks. Oh, yes, there is also a bottle opener, but I have never opened the bottle.</p>
+<p>At that moment, I thought: cooking is for the rich. I don&#x27;t deserve it.</p>
+</section>
+<section class="section" id="turnaround">
+<h2>Turnaround: I found the &quot;cheat code&quot;</h2>
+<p>Later, I found that it was not that I was not suitable for cooking, but that I was deceived by those &quot;correct&quot; cooking methods.</p>
+<p>Those exquisite recipes, perfect poses, and more than a dozen kinds of seasonings - they don&#x27;t serve people of my class at all. I am an ordinary student. My need is very simple: to cook a meal that can make me happy with the least money, the most basic kitchen utensils, and the shortest time.</p>
+<p>Besides, I don&#x27;t want to eat repeated dishes anymore. The feeling of eating the same thing for three consecutive days will make people doubt the meaning of life. Really, I&#x27;ve tried.</p>
+<p>So I began to think about one thing: how to make a completely different trick with the same ingredients?</p>
+<p>I call this &quot;the cheating method of eating more than one material&quot;.</p>
+<p>The core logic is very simple: buy a basic ingredient and use different processing methods (cold, hot, soup, stir-fried, grilled) to make it appear in a completely different way in a week. Prepare a meal once and have a happy week. No waste, no anxiety, no bankruptcy.</p>
+<p>Today&#x27;s protagonist is: chicken.</p>
+<p>Why did you choose chicken? Because it：</p>
+<p>Cheap: A roast chicken in Costco costs $4.99, which is enough for four meals for one person. Raw chicken legs are cheaper, $1.99 per pound when discounted.</p>
+<p>Easy to handle: Chicken is the most gentle meat in the world. Won&#x27;t you cook it? It&#x27;s okay. Add some water and boil it into soup. Don&#x27;t you know how to season? It&#x27;s okay. Add some soy sauce and it will be salty. No matter how much the chicken toss, it won&#x27;t taste bad, which is its virtue.</p>
+<p>The whole body is precious: chicken breast for salad, chicken leg fried rice, chicken wings directly, bones for soup, chicken skin fried in oil. A chicken died where it was, and no part was wasted.</p>
+<p>There is another reason: I hate chicken breast. I want to take revenge on it. I&#x27;m going to eat it out.</p>
+</section>
+<section class="section" id="prep">
+<h2>Prepare meals on Sunday: 1 hour, in exchange for a week of calmness</h2>
+<p>Supermarket purchase list (the total cost is about $12-15, 5 meals, an average of $2.5-3 per meal):</p>
+</section>
+<section class="section" id="ingredients">
+<h2>Ingredients, why buy it, remarks：</h2>
+<div class="callout">Buy ingredients that can appear in many recipes, not ingredients that belong to only one recipe.</div>
+<figure class="figure"><img src="ingredients.png" alt="Core ingredients for the week"><figcaption class="figcap">Core ingredients for the week</figcaption></figure>
+<p>1 roast chicken (or 3 chicken legs + 2 chicken breasts) Protagonist Roast chicken is the most trouble-free, and raw is cheaper.</p>
+<p>1 onion, all-round seasoning, can be left for a week without spoiling.</p>
+<p>2 carrots, nutrition + color, resistant, all-purpose side dishes</p>
+<p>1 box of eggs (6-12 pieces), protein reserve, can also be used in the morning</p>
+<p>Rice (or a bag of rice) is a staple food. A pot can be used for several days.</p>
+<p>A pack of lettuce/salad vegetables, green leafy vegetables, choose bags, no need to wash</p>
+<p>1 piece of ginger, de-fishy artifact, cut and frozen, can be put for a month</p>
+<p>1 head of garlic, source of fragrance, same as above</p>
+<p>3 potatoes, spare carbon water, eat before sprouting</p>
+<p>⚠️ The core secret of living alone to save money: Don&#x27;t buy things that &quot;this recipe needs&quot;, buy things that &quot;any recipe can be used&quot;. Onions, carrots, eggs, ginger and garlic - they can appear in any dish and will never be wasted.</p>
+<p>Things to do after going home (concentrated processing in 1 hour)</p>
+<p>This is the core of the whole method: use 1 hour of concentrated labor in exchange for 10-20 minutes of calmness every day for the next week.</p>
+<p>The first step: disassemble the chicken (10 minutes)</p>
+<p>If you buy roast chicken:</p>
+<p>Put on gloves (or start directly) and disassemble the whole chicken.</p>
+<p>Tear off the chicken legs and wings and eat them alone (this is your dinner on Wednesday)</p>
+<p>Shred the chicken breast and divide it into three portions (for Monday, Tuesday and Thursday)</p>
+<p>Don&#x27;t throw away chicken bones and chicken skins! Bone soup, chicken skin fried in oil</p>
+<p>The corner meat on the chicken skeleton is eaten while removing it - this is the legal welfare of the chef.</p>
+<p>If you buy raw chicken legs/chicken breasts:</p>
+<p>Scratch the chicken legs a few times and marinate them with soy sauce + cooking wine (you can freeze part of it)</p>
+<p>Boil or fry the whole piece of chicken breast, and then tear it into shreds (it is not easy to tear raw)</p>
+<p>Step 2: Prepare the dishes (15 minutes)</p>
+<p>Shred the onion and put it in a fresh box (refrigerated for a week)</p>
+<p>Carrots: half diced (for fried rice), half shredded (for salad)</p>
+<p>Sliced ginger and crushed garlic (two servings each, one refrigerated and one frozen)</p>
+<p>Potatoes: don&#x27;t move yet, and then deal with them before eating (cut will oxidize and turn black)</p>
+<p>Step 3: Cook a pot of rice (30 minutes, but don&#x27;t watch)</p>
+<p>Cook enough for 3-4 meals</p>
+<p>If you can&#x27;t finish it, divide it into small portions and freeze it.</p>
+<p>Take out the frozen rice and heat it in the microwave, which tastes better than fresh rice (because the moisture is uniform)</p>
+<p>Step 4: Boil a Kuaishou chicken soup (cook rice at the same time, no extra time)</p>
+<p>Put the chicken bones in cold water and add a few slices of ginger.</p>
+<p>After boiling, remove the foam and turn the heat to low.</p>
+<p>Let it growl by itself, and you can do something else.</p>
+<p>After 30 minutes, turn off the heat, filter out the clear soup, cool it and refrigerate it.</p>
+<p>Results inspection:</p>
+<p>Now you have in your refrigerator--</p>
+<p>Three servings of shredded chicken (Monday salad, Tuesday steamed rice, Thursday fried rice)</p>
+<p>Two complete chicken legs (Wednesday dinner)</p>
+<p>A box of chicken soup base (the soul of Thursday chicken soup noodles)</p>
+<p>Prepared onions and carrots</p>
+<p>A pot of rice (separted)</p>
+<p>In the next five days, you can have a different meal if you spend no more than 20 minutes a day.</p>
+</section>
+<section class="section" id="method1">
+<h2>Eating method 1: shredded chicken salad</h2>
+<figure class="figure"><img src="method1.png" alt="Method 1 · Shredded chicken salad"><figcaption class="figcap">Method 1 · Shredded chicken salad</figcaption></figure>
+<p>(Monday dinner, 10 minutes, no need to turn on the fire)</p>
+<p>Monday&#x27;s scenario setting: You have just finished a day&#x27;s class/a day&#x27;s work, and you are as tired as a dog. I don&#x27;t want to make a fire, I don&#x27;t want to wash the pot, I just want to lie down. But you can&#x27;t eat it, because you will wake up hungry in the middle of the night.</p>
+<p>At this time, you need: this salad that will not be cooked for 10 minutes.</p>
+<p>You need:</p>
+<p>A portion of shredded chicken (teared when preparing the meal)</p>
+<p>Lettuce (or any other green leafy vegetables you have, or even the cucumber left over from yesterday&#x27;s takeaway)</p>
+<p>Salad dressing (any sauce - mayonnaise, Qiandao sauce, oil and vinegar, even soy sauce + vinegar + sesame oil is completely ok)</p>
+<p>Shredded carrots (cut when preparing meals)</p>
+<p>Any vegetable edge that is almost in the refrigerator</p>
+<p>How to do it:</p>
+<p>Wash the lettuce and tear it into small pieces (don&#x27;t cut it with a knife, it tastes better by hand, and wash one less tool)</p>
+<p>Put shredded chicken, shredded carrots and other ingredients.</p>
+<p>Drizzle the sauce and mix well.</p>
+<p>Eat directly with a bowl and wash one less plate.</p>
+<p>Why is this way of eating smart:</p>
+<p>Don&#x27;t open fire: Monday is the most tiring, and not fire is kind to yourself.</p>
+<p>Clear the refrigerator: All the leftover vegetables on the weekend (half an onion, half a cucumber, three broccoli) can be thrown in.</p>
+<p>No need to wash the pot: there is only one bowl, wash it by hand after eating.</p>
+<p>Zero waste tips: One or two slices outside the lettuce are a little withered? Don&#x27;t throw it away. If you tear it up and put it in the salad, you can&#x27;t eat it at all. Don&#x27;t peel the carrot skin too thickly. You can eat it after washing it.</p>
+<p>Cost: about $2.50</p>
+<p>Time: 10 minutes</p>
+<p>Number of pots to wash: 0 (only one bowl is used)</p>
+</section>
+<section class="section" id="method2">
+<h2>Eating method 2: shredded chicken with rice</h2>
+<figure class="figure"><img src="method2.png" alt="Method 2 · Chicken rice soup"><figcaption class="figcap">Method 2 · Chicken rice soup</figcaption></figure>
+<p>(Tuesday dinner, 15 minutes, warm the heart and stomach)</p>
+<p>Tuesday&#x27;s scenario setting: the temperature has cooled down, or you are a little homesicked. The pictures on the takeaway software look cold. You need a bowl of hot food that can warm your stomach from your stomach to your heart.</p>
+<p>At this time, you need: this bowl of steamed rice. It is not porridge, not soup and rice, but between the two - students in the north may call it &quot;hot rice&quot;, and students in the south may think it is &quot;porridge&quot;.</p>
+<p>You need:</p>
+<p>A portion of shredded chicken</p>
+<p>A small bowl of rice</p>
+<p>Ginger slices (2-3 slices)</p>
+<p>Green onion flowers (if you have it, put it down, don&#x27;t pull it down)</p>
+<p>Salt, white pepper (white pepper is the soul, if not, black pepper is also good)</p>
+<p>Eggs? If you want to add it, you can make an egg flower.</p>
+<p>How to do it:</p>
+<p>Put a bowl of water in a small pot, add ginger slices, and boil.</p>
+<p>Put in the rice and shredded chicken, and break the rice with a spoon.</p>
+<p>Cook for 3-5 minutes so that the rice is full of soup.</p>
+<p>Season with salt and white pepper</p>
+<p>If you want to add egg flowers, pour in the beaten eggs before turning off the heat and stirring.</p>
+<p>Sprinkle green onions and take them out of the pot.</p>
+<p>Why is this way of eating smart:</p>
+<p>Placebo for the stomach: ginger dispels cold, hot soup warms the stomach, and rice provides a sense of carbon water.</p>
+<p>The ingredients are cooked: you don&#x27;t have to worry about cooking in the whole process. You don&#x27;t have to look at the pot. You can use your mobile phone while cooking.</p>
+<p>Healing: The moment you drink it with a bowl, you will feel that &quot;it&#x27;s not so bad today&quot;</p>
+<p>Tips: If there are any leftover green leaves (even if they are a little withered), throw them in and scald them before coming out of the pot. The green will make people feel better. If you catch a cold, add more ginger, cover yourself with a quilt after drinking, and you will be half better the next day.</p>
+<p>Cost: about $1.80</p>
+<p>Time: 15 minutes</p>
+<p>Number of pots to wash: 1 pot + 1 bowl</p>
+</section>
+<section class="section" id="method3">
+<h2>Eating method 3: hand-torn chicken legs + garlic puree soy sauce</h2>
+<figure class="figure"><img src="method3b.png" alt="Chicken for method 3"><figcaption class="figcap">Chicken for method 3</figcaption></figure>
+<p>(dinner on Wednesday, 15 minutes, add a chicken leg for yourself)</p>
+<p>Wednesday&#x27;s scenario setting: the hardest day of the week. There is no village in the front and no shop in the back. The weekend is still far away, and the blood on Monday has cooled down. You need a little &quot;reward sense&quot; and tell yourself to stick to it for two more days.</p>
+<p>At this time, you need to add a chicken leg to yourself.</p>
+<p>You need:</p>
+<p>2 chicken legs (sareased when preparing the meal)</p>
+<p>2 cloves of garlic (cut into minced garlic)</p>
+<p>2 spoons of soy sauce</p>
+<p>Half a spoonful of sesame oil</p>
+<p>Chili oil? If you have it, you can add it. If you don&#x27;t have it, you can add it.</p>
+<p>How to do it:</p>
+<p>Heat the chicken legs (if the grilled chicken is cooked, microwave it for 1 minute; if it is raw, steam it for 10 minutes or fry it)</p>
+<p>Mix the sauce: minced garlic + soy sauce + sesame oil + chili oil, stir well</p>
+<figure class="figure"><img src="method3a.png" alt="Garlic soy sauce"><figcaption class="figcap">Garlic soy sauce</figcaption></figure>
+<p>Tear the chicken legs into shreds (or chew them directly, see if you want to wash an extra bowl)</p>
+<p>Drizzle the sauce on it, or dip it and eat it.</p>
+<figure class="figure"><img src="method3c.png" alt="Finished method 3"><figcaption class="figcap">Finished method 3</figcaption></figure>
+<p>Why is this way of eating smart:</p>
+<p>The psychological hint of &quot;adding chicken legs&quot;: even if it is only heated for 1 minute, it is more ritualistic than eating shredded chicken.</p>
+<p>The simplest seasoning is the most delicious: garlic + soy sauce + sesame oil. This combination will never turn over.</p>
+<p>It can be disguised as a restaurant dish: sprinkle some green onions and white sesame seeds, and post it on WeChat Moments saying &quot;homemade hand-torn chicken&quot;. No one will believe it.</p>
+<p>Zero waste tips: If you buy raw chicken legs, oil will come out when frying. Don&#x27;t pour it. Keep it for stir-frying. It&#x27;s more fragrant than vegetable oil.</p>
+<p>Cost: about $2.00</p>
+<p>Time: 15 minutes</p>
+<p>Number of pots to wash: 1 small bowl + chopsticks</p>
+</section>
+<section class="section" id="method4">
+<h2>Eating method 4: Fried rice with shredded chicken and egg</h2>
+<p> (Thursday dinner, 12 minutes, pot gas redemption)</p>
+<p>Thursday&#x27;s scenario setting: tired. But it&#x27;s not time to relax completely. You need a meal with something &quot;pot gas&quot; to remind yourself that you are still alive and you still have energy.</p>
+<p>At this time, you need: fried rice. And it&#x27;s the kind of fried rice with soy sauce color, distinct grains and egg flavor.</p>
+<p>You need:</p>
+<p>A portion of shredded chicken</p>
+<p>A bowl of rice (it&#x27;s better to have overnight rice. If you don&#x27;t have it, fresh rice is fine, but it needs to be cooled a little)</p>
+<p>1 egg</p>
+<p>Diced carrots</p>
+<p>Diced onion</p>
+<p>Soy sauce</p>
+<p>cilantro (optional)</p>
+<p>How to do it:</p>
+<p>Beat the eggs, put oil in the pan, stir-fry and serve (don&#x27;t stir-fry too old, be tender)</p>
+<figure class="figure"><img src="method4a.png" alt="Soft scrambled egg"><figcaption class="figcap">Soft scrambled egg</figcaption></figure>
+<p>In the same pot, no need to wash, add diced onions and carrots, stir-fry until the onion becomes transparent.</p>
+<figure class="figure"><img src="method4c.png" alt="Prepped vegetables"><figcaption class="figcap">Prepped vegetables</figcaption></figure>
+<p>Put in the rice, crush it with a spatula, and stir-fry it quickly.</p>
+<figure class="figure"><img src="method4b.png" alt="Rice ready for the pan"><figcaption class="figcap">Rice ready for the pan</figcaption></figure>
+<p>Add shredded chicken and scrambled eggs.</p>
+<figure class="figure"><img src="method4d.png" alt="Shredded chicken added back in"><figcaption class="figcap">Shredded chicken added back in</figcaption></figure>
+<p>Sprinkle a circle of soy sauce along the edge of the pot (the temperature of the pot is high, and the soy sauce will evaporate instantly, producing a burning fragrance)</p>
+<p>Stir-fry quickly and evenly, sprinkle with green onions, and take it out of the pan.</p>
+<figure class="figure"><img src="method4f.png" alt="Finished fried rice"><figcaption class="figcap">Finished fried rice</figcaption></figure>
+<p>Why is this way of eating smart:</p>
+<p>The ultimate dish of clearing the refrigerator: all the remaining vegetables (mung beans, corn, broccoli stalks, leftover onions) can be diced and thrown in.</p>
+<p>Pot gas = healing: the sound of soy sauce &quot;shila&quot; by the hot pot is more healing than any music.</p>
+<p>The second life of rice: the best destination for leftovers, no one</p>
+<p>Zero waste tips: Don&#x27;t throw away broccoli stalks! Peel off the hard skin on the outside, and the core inside is crispy. Diced fried rice is especially delicious, and it tastes better than carrots.</p>
+<p>Cost: about $2.20</p>
+<p>Time: 12 minutes</p>
+<p>The number of pots washed: 1 pot + 1 bowl (after frying, take the pot directly and eat, you can wash one less bowl)</p>
+</section>
+<section class="section" id="method5">
+<h2>Eating method 5: Chicken soup noodles</h2>
+<figure class="figure"><img src="method5.png" alt="Method 5 · Chicken soup noodles"><figcaption class="figcap">Method 5 · Chicken soup noodles</figcaption></figure>
+<p> (Friday dinner, 20 minutes, weekend prelude)</p>
+<p>Friday&#x27;s scenario setting: The moment you get off work/after class, you feel that the air has become sweeter. The weekend is coming. You need a meal to celebrate, but you don&#x27;t want to be too troublesome - because you have to go out to play/warew series/play games at night.</p>
+<p>At this time, you need: a bowl of chicken soup noodles. It&#x27;s faster than takeaway, more advanced than instant noodles, and cheaper than eating out.</p>
+<p>You need:</p>
+<p>Chicken soup base (the box boiled on Sunday)</p>
+<p>Noodles (hanging noodles, instant noodles, udon noodles, and even instant noodles are all good)</p>
+<p>Shredded chicken (or chicken leg)</p>
+<p>Green vegetables (if any)</p>
+<p>Ginger slices (2-3 slices)</p>
+<p>Salt</p>
+<p>How to do it:</p>
+<p>Take the chicken soup base out of the refrigerator and pour it into the pot to boil.</p>
+<p>Next, cook (adjust the time according to the type of noodles)</p>
+<p>Put shredded chicken (and greens, ginger slices ) and cook for 1 minute.</p>
+<p>Taste the salt . If it&#x27;s not salty enough, add salt.</p>
+<p>Out of the pot</p>
+<p>Why is this way of eating smart:</p>
+<p>Chicken soup is a cheater: the box of chicken soup made on Sunday is your savior at this moment. You don&#x27;t need to boil it for two hours, and you can have a rich soup base in 5 minutes.</p>
+<p>Sense of ceremony: hold a bowl of noodles, sit in front of the computer, and open a drama. This is the correct way to open it on Friday.</p>
+<p>Evidence of saving money: The cost of this bowl of noodles is less than $2, but it tastes no worse than the $15 Japanese ramen.</p>
+<p>Tips: If the noodles are cooked too much, the soup will be dried up. Solution: Boil more soup, or cook the noodles and take them out, and serve the soup separately. It looks more when taking photos.</p>
+<p>Cost: about $1.50</p>
+<p>Time: 20 minutes</p>
+<p>Number of pots to wash: 1 pot + 1 bowl</p>
+</section>
+<section class="section" id="bonus">
+<h2>Bonus eating method: chicken oil omelet + oil residue salt</h2>
+<figure class="figure"><img src="bonus.png" alt="Bonus · Chicken fat fried egg"><figcaption class="figcap">Bonus · Chicken fat fried egg</figcaption></figure>
+<p>(Saturday breakfast, 10 minutes)</p>
+<p>On Saturday morning, you opened the refrigerator and found that the chicken skin was still there (left behind when you unpacked the chicken on Sunday).</p>
+<p>At this time, you can do a very extravagant thing: fried eggs with chicken oil.</p>
+<p>You need:</p>
+<p>Chicken skin (chopped)</p>
+<p>1-2 eggs</p>
+<p>Salt</p>
+<p>How to do it:</p>
+<p>In a small hot pot, add the shredded chicken skin.</p>
+<p>Fry slowly to make the chicken skin oily and turn into golden slag.</p>
+<p>Put the oil residue aside and beat the eggs into it.</p>
+<p>Fried eggs with chicken oil and sprinkle a little salt.</p>
+<p>Out of the pan, sprinkle the oil residue on the eggs.</p>
+<p>After this bite, you will understand why the French fry potatoes with duck oil. Animal fat is delicious in the world. Those who say &quot;chicken skin should be thrown away&quot; have not experienced real happiness.</p>
+<p>Cost: almost 0 (what was supposed to be thrown away)</p>
+<p>Time: 10 minutes</p>
+<p>Happiness: bursting table</p>
+<p>0 waste ultimate secret: those things you usually throw away can actually be eaten.</p>
+<p>After this week, you may have some &quot;edge material&quot; left. This is the &quot;Guide to the Transformation of Food for the Poor&quot; summarized from two years of living alone:</p>
+<p>1. Broccoli stalk</p>
+<p>Most people only eat the flowers on it, and the stalks are thrown away directly. But the outer skin of the broccoli stalk is peeled off, and the core inside is crispy, sweet and juicy.</p>
+<p>Shredded fried rice</p>
+<p>Sliced as a snack dipping sauce</p>
+<p>Marinate into pickles (cut into thin slices, salt + sugar + vinegar, marinate overnight)</p>
+<p>2. Chicken skin</p>
+<p>Chop it and fry it slowly over low heat to get chicken oil and oil residue.</p>
+<p>Stir-fried with chicken oil, fried eggs, mixed noodles</p>
+<p>Sprinkle salt on the oil residue and eat it directly, or sprinkle it on the rice and mix it with some soy sauce - this is called &quot;poor foie gras rice&quot;</p>
+<p>Three. Onion head/carrot peel</p>
+<p>Save it and put it in a frozen bag.</p>
+<p>Throw it in when you cook the soup next time, and the soup will be sweeter.</p>
+<p>After cooking, take it out and throw it away. The taste is already in the soup.</p>
+<p>4. Potato skin</p>
+<p>Wash it clean (key point!)</p>
+<p>Mix a little oil and salt and bake in an air fryer or oven.</p>
+<p>It&#x27;s healthier than potato chips when eaten as a snack.</p>
+<p>5. Celery leaves</p>
+<p>Many people buy celery and only eat the stalks and throw away the leaves. But scrambled eggs with celery leaves are particularly fragrant, or mixed with salad.</p>
+<p>6. The two layers of withered leaves on the outside of cabbage/letuce</p>
+<p>Don&#x27;t throw it away. If you tear it up and put it in the soup, or stir-fried rice, you can&#x27;t eat it at all.</p>
+<p>7. Boil noodles with water</p>
+<p>Don&#x27;t pour the water after cooking the noodles. It contains starch. Let it cool and water the flowers - plants like it.</p>
+</section>
+<section class="section" id="why">
+<h2>Why did this method change my life?</h2>
+<p>In the past, I thought that cooking was a &quot;or don&#x27;t do it, or do it well&quot;. So every time I cook, I have to search for recipes, buy ingredients, and follow the steps strictly, which makes me very tired. If I fail, I don&#x27;t want to do it.</p>
+<p>Later, I found that this kind of &quot;perfectionism&quot; was the culprit that made me order takeaway.</p>
+<p>Cooking doesn&#x27;t need to be perfect. You don&#x27;t need ten kinds of seasonings. There is no need for Michelin. All you need is a little cleverness - knowing how to make different tricks from the same ingredient.</p>
+<p>I have used this set of &quot;one material and more&quot; method for two years, and I have never failed. It changed me from &quot;I don&#x27;t know what to eat when I open the refrigerator&quot; to &quot;open the refrigerator and start sorting&quot;. It changed me from &quot;wasting another half a vegetable&quot; to &quot;I actually ate all the vegetable roots&quot;. It made me change from &quot;ordering takeaway and spending half of my living expenses&quot; to &quot;only spending XXX yuan on meals every month and showing off on WeChat Moments&quot;.</p>
+<p>More importantly, it makes me think that I can take good care of myself by myself.</p>
+</section>
+<section class="section" id="yourturn">
+<h2>Is  Your turn ！</h2>
+<p>Now it&#x27;s your turn.</p>
+<p>What&#x27;s in your refrigerator? Take photos and post them in the comment section. Let me help you think of five ways to eat it.</p>
+<p>Half of the cabbage left yesterday? Can:</p>
+<p>Hand-torn cabbage (stir-fried with dried chili)</p>
+<p>Fried rice with vegetables (shredded and stir-fried with leftovers)</p>
+<p>Vegetable salad (raw, with mayonnaise)</p>
+<p>Baocai soup (cooked with chicken soup)</p>
+<p>Pancakes with vegetables (shredded and fried with egg flour)</p>
+<p>The minced pork you bought last weekend? Can:</p>
+<p>PASTA WITH MEAT SAUCE</p>
+<p>Steamed eggs with minced meat</p>
+<p>Stir-fried vegetables with minced meat (with porridge artifact)</p>
+<p>Minced meat tofu</p>
+<p>Fried rice with minced meat</p>
+<p>Even - instant noodles:</p>
+<p>Cook and eat (with eggs and vegetables)</p>
+<p>Stir-fry and eat (cook instant noodles and stir-fry with eggs and vegetables)</p>
+<p>Mix and eat (cook, drain, add sauce and mix)</p>
+<p>Instant noodles pancakes (pressing instant noodles and frying eggs)</p>
+<p>Crispy noodles (directly crushed and seasoned, as a snack)</p>
+<p>You see, once you master the way of thinking of &quot;eating more with one material&quot;, there are no ingredients in the refrigerator that you don&#x27;t know what to do.</p>
+</section>
+
+    <div class="footer">© Jeanne Jiang · Jeanne’s Kitchen</div>
+  </article>
+</div>
+</body>
+</html>
