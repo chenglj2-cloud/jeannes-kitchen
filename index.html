@@ -900,11 +900,15 @@ const musicControl = document.getElementById("music-control");
 musicControl.onclick = function(){
 
 if(music.paused){
+
 music.play();
-musicControl.innerText="🎵";
+musicControl.innerText="🔊";
+
 }else{
+
 music.pause();
 musicControl.innerText="🔇";
+
 }
 
 }
