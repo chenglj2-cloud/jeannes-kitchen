@@ -84,6 +84,10 @@ aside{
   padding:8px 10px; border-radius:10px; font-size:15px;
 }
 .toc a:hover{background:#f5efe7}
+.toc a.active{
+background:#f4e4d4;
+font-weight:600;
+}
 .note{
   margin-top:14px; color:var(--muted); font-size:14px; line-height:1.7;
 }
@@ -598,5 +602,39 @@ The photo I posted to my WeChat Moments.
     <div class="footer">© Jeanne Jiang · Jeanne’s Kitchen</div>
   </article>
 </div>
+  
+<script>
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".toc a");
+
+window.addEventListener("scroll", () => {
+
+let current = "";
+
+sections.forEach(section => {
+
+const sectionTop = section.offsetTop - 120;
+
+if(pageYOffset >= sectionTop){
+current = section.getAttribute("id");
+}
+
+});
+
+navLinks.forEach(link => {
+
+link.classList.remove("active");
+
+if(link.getAttribute("href") === "#" + current){
+link.classList.add("active");
+}
+
+});
+
+});
+
+</script>
+  
 </body>
 </html>
