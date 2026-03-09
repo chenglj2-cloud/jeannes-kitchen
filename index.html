@@ -298,6 +298,24 @@ color:white;
 #close-music{
 background:#ddd;
 }
+
+#music-control{
+position:fixed;
+bottom:20px;
+right:20px;
+width:50px;
+height:50px;
+background:#b86f3a;
+color:white;
+font-size:22px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+cursor:pointer;
+box-shadow:0 6px 15px rgba(0,0,0,0.25);
+z-index:9999;
+}
   
 </style>
 </head>
@@ -876,8 +894,24 @@ document.getElementById("close-music").onclick = function(){
   document.getElementById("music-popup").style.display = "none";
 
 }
+
+const musicControl = document.getElementById("music-control");
+
+musicControl.onclick = function(){
+
+if(music.paused){
+music.play();
+musicControl.innerText="🎵";
+}else{
+music.pause();
+musicControl.innerText="🔇";
+}
+
+}
+  
   
 </script>
+<div id="music-control">🎵</div>
 </body>
 </html>
 
